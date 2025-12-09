@@ -1,16 +1,136 @@
-## Hi there 👋
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SK Wealth – Goal Mapping</title>
 
-<!--
-**SKWEALTH/SKWEALTH** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #fff;
+        color: #333;
+    }
 
-Here are some ideas to get you started:
+    /* GOLD THEME */
+    .header {
+        background: linear-gradient(135deg, #d4af37, #b8860b);
+        padding: 25px;
+        text-align: center;
+        color: white;
+        font-size: 26px;
+        font-weight: bold;
+    }
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+    .container {
+        padding: 20px;
+        max-width: 900px;
+        margin: auto;
+    }
+
+    h2 {
+        color: #b8860b;
+        border-left: 4px solid #d4af37;
+        padding-left: 10px;
+    }
+
+    select, input {
+        width: 100%;
+        padding: 12px;
+        margin-top: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+
+    button {
+        width: 100%;
+        padding: 14px;
+        background: #b8860b;
+        color: white;
+        font-size: 18px;
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+    }
+
+    .result-box {
+        margin-top: 20px;
+        padding: 20px;
+        background: #fff7d1;
+        border-left: 4px solid #b8860b;
+        font-size: 18px;
+        border-radius: 6px;
+    }
+
+    .whatsapp-btn {
+        background: #25D366;
+        color: white;
+        padding: 14px;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 6px;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="header">SK Wealth – Smart Goal Mapping Tool</div>
+
+<div class="container">
+
+    <h2>🎯 Select Your Financial Goal</h2>
+    <select id="goal">
+        <option value="500000">Child Education – ₹5,00,000</option>
+        <option value="1000000">Child Marriage – ₹10,00,000</option>
+        <option value="3000000">Retirement – ₹30,00,000</option>
+        <option value="1500000">Dream Home – ₹15,00,000</option>
+        <option value="800000">Dream Car – ₹8,00,000</option>
+    </select>
+
+    <h2>⌛ Goal Duration (Years)</h2>
+    <input type="number" id="years" placeholder="Enter years (example: 10)" />
+
+    <button onclick="calculate()">Calculate SIP & Lumpsum</button>
+
+    <div id="result" class="result-box" style="display:none;"></div>
+
+    <a class="whatsapp-btn" href="https://wa.me/918446393613" target="_blank">
+        📲 Contact SK Wealth on WhatsApp
+    </a>
+
+</div>
+
+<script>
+function calculate() {
+    let goal = parseFloat(document.getElementById("goal").value);
+    let years = parseFloat(document.getElementById("years").value);
+
+    if (!years || years < 1) {
+        alert("Please enter a valid number of years.");
+        return;
+    }
+
+    // SIP Formula
+    let r = 0.12 / 12;
+    let n = years * 12;
+    let sip = goal * r / (Math.pow(1 + r, n) - 1);
+
+    // Lumpsum Formula (12% return)
+    let lumpsum = goal / Math.pow(1.12, years);
+
+    document.getElementById("result").style.display = "block";
+    document.getElementById("result").innerHTML =
+        `<b>SIP Required:</b> ₹${sip.toFixed(0)} / month<br><br>
+         <b>Lumpsum Required:</b> ₹${lumpsum.toFixed(0)}`;
+}
+</script>
+
+</body>
+</html>
