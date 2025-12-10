@@ -1,122 +1,71 @@
-<!-- ⭐ SK WEALTH – GOLD ANIMATED COUNTERS ⭐ -->
+<!-- ⭐ SK WEALTH – GOLD STATIC AUM & SIP BOOK SECTION ⭐ -->
 <style>
-.counter-section {
+.stats-section {
     background: #1a1a1a;
     padding: 40px 15px;
     text-align: center;
     border-bottom: 2px solid #d4af37;
 }
 
-.counter-title {
+.stats-title {
     font-size: 28px;
-    color: #d4af37;
     font-weight: bold;
-    letter-spacing: 1px;
-    margin-bottom: 30px;
+    color: #d4af37;
+    margin-bottom: 25px;
 }
 
-.counter-container {
+.stats-container {
     display: flex;
     justify-content: center;
     gap: 25px;
     flex-wrap: wrap;
 }
 
-.counter-card {
+.stat-card {
     background: #000;
     padding: 25px;
     border: 2px solid #d4af37;
     border-radius: 12px;
     width: 180px;
-    box-shadow: 0 0 18px rgba(212, 175, 55, 0.4);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
 }
 
-.counter-number {
+.stat-value {
     font-size: 32px;
     font-weight: bold;
     color: #d4af37;
 }
 
-.counter-label {
+.stat-label {
     font-size: 16px;
     color: white;
     margin-top: 6px;
 }
-
-/* Smooth Number Animation */
 </style>
 
-<div class="counter-section">
-    <div class="counter-title">📊 SK Wealth Performance</div>
+<div class="stats-section">
+    <div class="stats-title">📊 SK Wealth Highlights</div>
 
-    <div class="counter-container">
+    <div class="stats-container">
 
-        <div class="counter-card">
-            <div id="aumCounter" class="counter-number">0</div>
-            <div class="counter-label">Total AUM</div>
+        <div class="stat-card">
+            <div class="stat-value">₹ 2 Cr</div>
+            <div class="stat-label">Total AUM</div>
         </div>
 
-        <div class="counter-card">
-            <div id="clientCounter" class="counter-number">0</div>
-            <div class="counter-label">Active Clients</div>
+        <div class="stat-card">
+            <div class="stat-value">₹ 11 Lakh</div>
+            <div class="stat-label">Monthly SIP Book</div>
         </div>
 
-        <div class="counter-card">
-            <div id="sipCounter" class="counter-number">0</div>
-            <div class="counter-label">Monthly SIP Book</div>
+        <div class="stat-card">
+            <div class="stat-value">275</div>
+            <div class="stat-label">Active Clients</div>
         </div>
 
     </div>
 </div>
 
-<script>
-function animateValue(id, start, end, duration, format=false) {
-    let obj = document.getElementById(id);
-    let range = end - start;
-    let stepTime = Math.abs(Math.floor(duration / range));
-    let current = start;
-
-    let timer = setInterval(function() {
-        current++;
-        if (format) {
-            obj.innerHTML = formatNumber(current);
-        } else {
-            obj.innerHTML = current;
-        }
-        if (current >= end) clearInterval(timer);
-    }, stepTime);
-}
-
-function formatNumber(num) {
-    return num.toLocaleString('en-IN');
-}
-
-window.onload = function() {
-    // AUM: 2 Crore → 20000000
-    animateValue("aumCounter", 0, 20000000, 2000, true);
-
-    // Clients: 275
-    animateValue("clientCounter", 0, 275, 1500);
-
-    // SIP Book: 11 Lakh → 1100000
-    animateValue("sipCounter", 0, 1100000, 2000, true);
-};
-</script>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SK Wealth – Smart Goal Planner</title>
-
-<style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #fff;
-        color: #333;
     }
 
     /* GOLD THEME HEADER */
