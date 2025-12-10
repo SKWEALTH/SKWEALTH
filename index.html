@@ -3,45 +3,55 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SK Wealth – Goal Mapping</title>
+<title>SK Wealth – Smart Goal Planner</title>
 
 <style>
     body {
-        font-family: Arial, sans-serif;
         margin: 0;
+        font-family: Arial, sans-serif;
         background: #fff;
         color: #333;
     }
 
-    /* GOLD THEME */
+    /* GOLD THEME HEADER */
     .header {
         background: linear-gradient(135deg, #d4af37, #b8860b);
-        padding: 25px;
         text-align: center;
+        padding: 25px 15px;
         color: white;
-        font-size: 26px;
+        font-size: 28px;
         font-weight: bold;
     }
 
+    .subheader {
+        text-align: center;
+        color: #444;
+        margin-top: 8px;
+        font-size: 16px;
+    }
+
+    /* CONTAINER */
     .container {
-        padding: 20px;
         max-width: 900px;
         margin: auto;
+        padding: 20px;
     }
 
     h2 {
         color: #b8860b;
-        border-left: 4px solid #d4af37;
+        border-left: 5px solid #d4af37;
         padding-left: 10px;
+        margin-top: 30px;
     }
 
     select, input {
         width: 100%;
         padding: 12px;
-        margin-top: 8px;
+        margin-top: 10px;
         margin-bottom: 15px;
+        border-radius: 8px;
         border: 1px solid #ccc;
-        border-radius: 6px;
+        font-size: 16px;
     }
 
     button {
@@ -51,84 +61,127 @@
         color: white;
         font-size: 18px;
         border: none;
-        border-radius: 6px;
+        border-radius: 8px;
         font-weight: bold;
+        margin-top: 10px;
     }
 
     .result-box {
         margin-top: 20px;
         padding: 20px;
-        background: #fff7d1;
-        border-left: 4px solid #b8860b;
+        background: #fff9d6;
+        border-left: 5px solid #d4af37;
+        border-radius: 8px;
         font-size: 18px;
-        border-radius: 6px;
     }
 
+    /* WHATSAPP BUTTON */
     .whatsapp-btn {
         background: #25D366;
-        color: white;
-        padding: 14px;
-        display: block;
         text-align: center;
-        text-decoration: none;
-        border-radius: 6px;
+        padding: 14px;
+        color: white;
         font-size: 18px;
+        border-radius: 8px;
+        margin-top: 25px;
+        text-decoration: none;
+        display: block;
         font-weight: bold;
-        margin-top: 20px;
+    }
+
+    /* FOOTER */
+    .footer {
+        text-align: center;
+        padding: 25px;
+        margin-top: 40px;
+        background: #f3f3f3;
+        color: #555;
+        font-size: 15px;
     }
 </style>
 </head>
 
 <body>
 
-<div class="header">SK Wealth – Smart Goal Mapping Tool</div>
+<!-- HEADER -->
+<div class="header">SK Wealth</div>
+<div class="subheader">Smart Financial Planning • SIP • Goal Mapping • Wealth Creation</div>
 
 <div class="container">
 
+    <!-- LANDING SECTION -->
+    <h2>📌 About SK Wealth</h2>
+    <p>
+        At <b>SK Wealth</b>, we help individuals and families achieve financial freedom through
+        smart investing, SIP planning, goal-based advisory, and long-term wealth creation.
+        This tool helps you understand how much SIP or lump-sum is needed to achieve your goals.
+    </p>
+
+    <!-- GOAL MAPPING TOOL -->
     <h2>🎯 Select Your Financial Goal</h2>
+
     <select id="goal">
-        <option value="500000">Child Education – ₹5,00,000</option>
-        <option value="1000000">Child Marriage – ₹10,00,000</option>
-        <option value="3000000">Retirement – ₹30,00,000</option>
-        <option value="1500000">Dream Home – ₹15,00,000</option>
-        <option value="800000">Dream Car – ₹8,00,000</option>
+        <option value="Education">Child Education</option>
+        <option value="Marriage">Child Marriage</option>
+        <option value="Retirement">Retirement Planning</option>
+        <option value="House">Buy a House</option>
+        <option value="Car">Buy a Car</option>
+        <option value="Trip">Foreign Trip</option>
+        <option value="Emergency">Emergency Fund</option>
+        <option value="Tax">Tax Saving</option>
+        <option value="Wealth">Wealth Creation</option>
     </select>
 
-    <h2>⌛ Goal Duration (Years)</h2>
-    <input type="number" id="years" placeholder="Enter years (example: 10)" />
+    <h2>💰 Goal Amount (₹)</h2>
+    <input id="amount" type="number" placeholder="Enter goal amount" />
 
-    <button onclick="calculate()">Calculate SIP & Lumpsum</button>
+    <h2>⌛ Years to Achieve Goal</h2>
+    <input id="years" type="number" placeholder="Enter number of years" />
 
-    <div id="result" class="result-box" style="display:none;"></div>
+    <h2>📈 Expected Return (%)</h2>
+    <input id="return" type="number" value="12" />
 
-    <a class="whatsapp-btn" href="https://wa.me/918446393613" target="_blank">
-        📲 Contact SK Wealth on WhatsApp
+    <button onclick="calculate()">Calculate My Plan</button>
+
+    <div id="result" class="result-box" style="display: none;"></div>
+
+    <!-- WHATSAPP BUTTON -->
+    <a href="https://wa.me/918446393613" class="whatsapp-btn" target="_blank">
+        📲 Chat with SK Wealth on WhatsApp
     </a>
 
 </div>
 
+<!-- FOOTER -->
+<div class="footer">
+    © 2025 SK Wealth | Mutual Fund Distributor | Contact: 8446393613
+</div>
+
+<!-- SCRIPT -->
 <script>
 function calculate() {
-    let goal = parseFloat(document.getElementById("goal").value);
-    let years = parseFloat(document.getElementById("years").value);
+    let amount = Number(document.getElementById('amount').value);
+    let years = Number(document.getElementById('years').value);
+    let rate = Number(document.getElementById('return').value) / 100;
 
-    if (!years || years < 1) {
-        alert("Please enter a valid number of years.");
+    if (!amount || !years) {
+        alert("Please enter goal amount and years");
         return;
     }
 
     // SIP Formula
-    let r = 0.12 / 12;
+    let r = rate / 12;
     let n = years * 12;
-    let sip = goal * r / (Math.pow(1 + r, n) - 1);
+    let sip = amount * r / (Math.pow(1 + r, n) - 1);
 
-    // Lumpsum Formula (12% return)
-    let lumpsum = goal / Math.pow(1.12, years);
+    // Lump Sum
+    let lump = amount / Math.pow(1 + rate, years);
 
     document.getElementById("result").style.display = "block";
     document.getElementById("result").innerHTML =
-        `<b>SIP Required:</b> ₹${sip.toFixed(0)} / month<br><br>
-         <b>Lumpsum Required:</b> ₹${lumpsum.toFixed(0)}`;
+        "<b>Selected Goal:</b> " + document.getElementById("goal").value +
+        "<br><br><b>Required SIP:</b> ₹" + sip.toFixed(0) + " per month" +
+        "<br><b>Lump Sum Needed Today:</b> ₹" + lump.toFixed(0);
 }
 </script>
 
