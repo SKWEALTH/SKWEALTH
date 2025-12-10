@@ -257,6 +257,136 @@ window.onload = function() {
     </a>
 
 </div>
+<!-- ⭐ SK WEALTH – GOLD THEME TESTIMONIAL SLIDER ⭐ -->
+<style>
+.slider-section {
+    background: #fff7d1;
+    padding: 40px 20px;
+    border-top: 3px solid #d4af37;
+    border-bottom: 3px solid #d4af37;
+    text-align: center;
+}
+
+.slider-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #b8860b;
+    margin-bottom: 20px;
+}
+
+.slider-container {
+    position: relative;
+    max-width: 350px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.testimonial-slide {
+    display: none;
+    background: white;
+    padding: 22px;
+    border-radius: 14px;
+    border: 2px solid #d4af37;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.testimonial-text {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.testimonial-name {
+    font-size: 18px;
+    color: #b8860b;
+    font-weight: bold;
+}
+
+.dot-container {
+    margin-top: 15px;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: #d4af37;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.4;
+}
+
+.active-dot {
+    opacity: 1;
+    background-color: #b8860b;
+}
+</style>
+
+<div class="slider-section">
+    <div class="slider-title">💬 What Our Clients Say</div>
+
+    <div class="slider-container">
+
+        <div class="testimonial-slide">
+            <div class="testimonial-text">
+                “Satish Sir यांनी माझ्या investment life ला पूर्ण दिशा दिली.
+                SK Wealth चा support खूप professional आणि विश्वासू आहे.”
+            </div>
+            <div class="testimonial-name">— Sandeep Salvi</div>
+        </div>
+
+        <div class="testimonial-slide">
+            <div class="testimonial-text">
+                “Mutual Funds बद्दल मला काहीही knowledge नव्हतं.
+                पण SK Wealth ने मला अगदी step by step security सोबत मार्गदर्शन केलं.”
+            </div>
+            <div class="testimonial-name">— Mukesh Jadhav</div>
+        </div>
+
+        <div class="testimonial-slide">
+            <div class="testimonial-text">
+                “माझा SIP आणि overall portfolio आता व्यवस्थित track वर आहे.
+                SK Wealth ची service fast आणि अत्यंत friendly आहे.”
+            </div>
+            <div class="testimonial-name">— Anil Karad</div>
+        </div>
+
+    </div>
+
+    <div class="dot-container">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+</div>
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    let i;
+    let slides = document.getElementsByClassName("testimonial-slide");
+    let dots = document.getElementsByClassName("dot");
+
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+    }
+
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1 }    
+
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active-dot", "");
+    }
+
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active-dot";
+
+    setTimeout(showSlides, 3000); // 3 seconds auto-slide
+}
+</script>
 
 <!-- FOOTER -->
 <div class="footer">
